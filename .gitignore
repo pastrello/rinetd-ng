@@ -1,14 +1,4 @@
-.venv/
+upstream/
 __pycache__/
 .pytest_cache/
-*.pyc
-*.o
 *.rpm
-*.deb
-*.log
-stress-results.json
-stress-*.json
-config.log
-config.status
-autom4te.cache/
-upstream/
