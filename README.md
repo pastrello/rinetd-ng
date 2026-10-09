@@ -48,3 +48,16 @@ Run `./install.sh --test-stress` after building. See [docs/STRESS.md](docs/STRES
 ## RC2 engineering additions
 
 See [RC2 status](docs/RC2-STATUS.md). Commands: `./install.sh --test-resilience`, `./install.sh --check-release`, `./tools/build-sanitized.sh`, `./tools/build-deb.sh`. Release gate intentionally fails while the transactional reload is missing.
+
+
+## Git repository and automated CI
+
+**Official source repository for this fork:** https://github.com/pastrello/rinetd-ng
+
+- `main`: preserved upstream baseline until release qualification
+- `develop`: active rinetd-ng development, the source of truth for changes
+- `feature/*`: proposed functionality through pull requests
+- GitHub Actions `Linux CI`: Linux compilation, TCP/UDP integration, 20-cycle reload regression, license/script checks, and experimental DEB package generation
+
+The workflow currently checks Rocky Linux 8/9/10 and Ubuntu 22.04/24.04. Ubuntu 26.04 and production certification need separate qualification. CI does **not** install or enable the system service. The build still imports the pinned upstream revision into `upstream/` and applies development patches; migration to an in-tree patched C engine is planned. **Passing CI does not certify transactional reload or production readiness.**
+
