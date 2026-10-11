@@ -18,7 +18,7 @@ Section: net
 Priority: optional
 Architecture: $ARCH
 Maintainer: rinetd-ng contributors <noreply@example.invalid>
-Depends: \${misc:Depends}
+Depends: libc6
 Description: TCP and UDP port redirection daemon, experimental RC2
  Derived from rinetd by Thomas Boutell and Sam Hocevar.
 EOF
