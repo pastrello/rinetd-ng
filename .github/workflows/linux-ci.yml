@@ -51,7 +51,7 @@ jobs:
     name: Rocky Linux ${{ matrix.release }} / build + acceptance
     runs-on: ubuntu-24.04
     container:
-      image: rockylinux:${{ matrix.release }}
+      image: rockylinux/rockylinux:${{ matrix.release }}
     strategy:
       fail-fast: false
       matrix:
@@ -62,6 +62,7 @@ jobs:
           dnf install -y git gcc make autoconf automake python3 python3-pip ca-certificates tar gzip
           if ! python3 -m pytest --version >/dev/null 2>&1; then
             dnf install -y python3-pytest || python3 -m pip install --no-cache-dir pytest
+          if [ "${{ matrix.release }}" = '8' ]; then python3 -m pip install --no-cache-dir --upgrade 'pytest>=7,<9'; fi
           fi
       - uses: actions/checkout@v4
       - name: Import pinned upstream and build
