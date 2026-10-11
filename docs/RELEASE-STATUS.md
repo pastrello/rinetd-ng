@@ -13,3 +13,10 @@
 | Fully integrated RC2 sources committed to Git | **Pending** |
 
 1.0 must not be tagged until the blocking gates are verified. The upstream `main` branch remains unchanged.
+
+
+## Consolidation checkpoint — 2026-10-11
+
+`develop` is the canonical development branch. GitHub Actions run 37881935363 exposed three issues: invalid DEB control Depends substitution, Rocky 8 pytest missing tmp_path, and unavailable rockylinux:10 container image. CI and package scripts have been updated; a new green run is still required.
+
+This is not a stable 1.0 release. The original `main` branch remains untouched. Transactional reload/rollback and OS-specific packaging acceptance remain release gates.
